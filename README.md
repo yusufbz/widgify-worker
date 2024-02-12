@@ -1,0 +1,1 @@
+# widgify-worker
