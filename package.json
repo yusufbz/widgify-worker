@@ -1,0 +1,11 @@
+{
+  "name": "widgify-worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon worker.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
