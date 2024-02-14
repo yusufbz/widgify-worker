@@ -40,7 +40,7 @@ function addWidgetStyle(widget) {
 	document.head.appendChild(styleTag);
 }
 
-function createWidget({ _id, chat_widget_id, widget, is_demo, env }) {
+function createWidget({ _id, chat_widget_id, widget, env }) {
 	const iframeSrc = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
 	console.log("Adding widget…")
 	// SECTION
@@ -68,7 +68,7 @@ function createWidget({ _id, chat_widget_id, widget, is_demo, env }) {
 	// MODAL
 	const chat_modal = document.createElement('iframe');
 	chat_modal.className = "chat-modal"
-	chat_modal.src = `${iframeSrc}?_id=${_id}&chat_widget_id=${chat_widget_id}&is_demo=${is_demo}&env=${env}`
+	chat_modal.src = `${iframeSrc}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
 
 
 	// const closeBtn = document.createElement("img")
@@ -102,7 +102,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		const _id = script.dataset._id;
 		const chat_widget_id = script.dataset.chat_widget_id;
-		const is_demo = script.dataset.is_demo;
 		const port = env === "dev" ? "https://widgify-api-dev.up.railway.app" : env === "local" ? "http://localhost:9931" : "https://api.widgify.chat"
 
 		const account = await fetch(`${port}/storefront/getAccount`, {
@@ -113,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		if (account.hasAccess) {
 			fetchWidget({ chat_widget_id, port }).then(data => {
-				createWidget({ _id, chat_widget_id, widget: data, is_demo, env })
+				createWidget({ _id, chat_widget_id, widget: data, env })
 				addWidgetStyle(data)
 				console.log("page is fully loaded");
 			}).catch(error => {
