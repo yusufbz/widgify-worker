@@ -94,6 +94,18 @@
   border: 1px solid rgba(255, 255, 255, 0.02);
   width: -moz-max-content;
   width: max-content;
+  animation: showLabel 250ms cubic-bezier(0, 0.55, 0.37, 1.29);
+  transform-origin: right;
+}
+@keyframes showLabel {
+  from {
+    opacity: 0%;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 100%;
+    transform: scale(1);
+  }
 }
 .chat-widget___ .container .chat-widget-btn img {
   width: 24px;
