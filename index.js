@@ -13,6 +13,7 @@ async function fetchWidget({ ...props }) {
 function toggleChatWidget() {
 	const chat_modal = document.querySelector(".chat-modal")
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
+
 	chat_modal.classList.toggle("show")
 	// check if the chat widget is open or not
 	if (chat_widget_btn.classList.contains("hide"))
@@ -54,12 +55,16 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	btn.className = 'chat-widget-btn';
 	const btnIcon = document.createElement('img');
 	btnIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
-	// if (widget.style.label) {
-	// 	const btnLabel = document.createElement('p');
-	// 	btnLabel.textContent = widget.style.label.text
-	// 	widget.style.position == "flex-end" ? btnLabel.style.right = "calc(64px + 12px)" : btnLabel.style.left = "calc(64px + 12px)"
-	// 	btn.appendChild(btnLabel)
-	// }
+	if (widget.style.label) {
+		const btnLabel = document.createElement('p');
+		btnLabel.textContent = widget.style.label.text
+		widget.style.position == "flex-end" ? btnLabel.style.right = "calc(64px + 12px)" : btnLabel.style.left = "calc(64px + 12px)"
+		btn.appendChild(btnLabel)
+
+		setTimeout(() => {
+			btnLabel.style.display = "none"
+		}, 4000)
+	}
 	btn.appendChild(btnIcon)
 
 	// MODAL
