@@ -101,6 +101,8 @@
 				display: none;
 				animation: showLabel 250ms cubic-bezier(0, .55, .37, 1.29);
 				transform-origin: right center;
+				max-width: 240px;
+				line-height: 140%;
 
 
 				@keyframes showLabel {
