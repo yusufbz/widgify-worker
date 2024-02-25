@@ -1,14 +1,11 @@
 async function fetchWidget({ ...props }) {
 	// console.log(props)
 	console.log("fetching…")
-	const response = await fetch(`${props.port}/storefront/getWidget`, {
-		method: "POST",
+	const response = await fetch(`${props.port}/storefront/getWidget?_id=${props.chat_widget_id}`, {
+		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			"_id": props.chat_widget_id,
-		})
+		}
 	});
 	return await response.json();
 }
@@ -104,10 +101,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const chat_widget_id = script.dataset.chat_widget_id;
 		const port = env === "dev" ? "https://widgify-api-dev.up.railway.app" : env === "local" ? "http://localhost:9931" : "https://api.widgify.chat"
 
-		const account = await fetch(`${port}/storefront/getAccount`, {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({ "_id": _id })
+		const account = await fetch(`${port}/storefront/getAccount?_id=${_id}`, {
+			method: "GET",
+			headers: { "Content-Type": "application/json" }
 		}).then(res => res.json()).catch(err => console.log(err))
 
 		if (account.hasAccess) {
