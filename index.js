@@ -63,7 +63,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		btn.appendChild(btnLabel)
 
 		setTimeout(() => {btnLabel.style.display = "block"}, 1000)
-		setTimeout(() => {btnLabel.style.display = "none"}, 5000)
+		setTimeout(() => {btnLabel.style.display = "none"}, 10000)
 	}
 	btn.appendChild(btnIcon)
 
