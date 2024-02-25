@@ -59,10 +59,8 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		const btnLabel = document.createElement('p');
 		btnLabel.textContent = widget.style.label.text
 		widget.style.position == "flex-end" ? btnLabel.style.right = "calc(64px + 12px)" : btnLabel.style.left = "calc(64px + 12px)"
-		btnLabel.style.display = "none"
 		btn.appendChild(btnLabel)
 
-		setTimeout(() => {btnLabel.style.display = "block"}, 1000)
 		setTimeout(() => {btnLabel.style.display = "none"}, 10000)
 	}
 	btn.appendChild(btnIcon)
