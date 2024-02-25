@@ -98,6 +98,7 @@
 				transform: translateY(-50%);
 				border: 1px solid rgba(#ffffff, .02);
 				width: max-content;
+				display: none;
 				animation: showLabel 250ms cubic-bezier(0, .55, .37, 1.29) 2s;
 				transform-origin: right center;
 
