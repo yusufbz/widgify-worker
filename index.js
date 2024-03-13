@@ -61,8 +61,8 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		widget.style.position == "flex-end" ? btnLabel.style.right = "calc(64px + 12px)" : btnLabel.style.left = "calc(64px + 12px)"
 		btn.appendChild(btnLabel)
 
-		setTimeout(() => {btnLabel.style.display = "block"}, 2000)
-		setTimeout(() => {btnLabel.style.display = "none"}, 10000)
+		setTimeout(() => { btnLabel.style.display = "block" }, 2000)
+		setTimeout(() => { btnLabel.style.display = "none" }, 10000)
 	}
 	btn.appendChild(btnIcon)
 
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const account = await fetch(`${port}/storefront/getAccount?_id=${_id}`, {
 			method: "GET",
 			headers: { "Content-Type": "application/json" }
-		}).then(res => res.json()).catch(err => console.log(err))
+		}).then(res => res.json()).catch(err => { throw new Error(err) })
 
 		if (account.hasAccess) {
 			fetchWidget({ chat_widget_id, port }).then(data => {
