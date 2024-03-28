@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .chat-widget___ {
   position: relative;
   margin: 0;
@@ -14,6 +15,18 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: var(--position);
+}
+@media (max-width: 600px) {
+  .chat-widget___ .container {
+    height: 100svh;
+    padding: 0px;
+    width: 100%;
+  }
+  .chat-widget___ .container .chat-modal {
+    width: 100%;
+    max-height: 100%;
+    border-radius: 0px;
+  }
 }
 .chat-widget___ .container .chat-modal {
   width: 420px;
@@ -82,12 +95,12 @@
   z-index: 1;
   transform: scale(1);
 }
-.chat-widget___ .container .chat-widget-btn p {
+.chat-widget___ .container .chat-widget-btn .chat-dialog {
   position: absolute;
   padding: 12px;
-  background-color: #051814;
+  background-color: white;
   color: white;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 14px;
   top: 50%;
   transform: translateY(-50%);
@@ -97,8 +110,45 @@
   display: none;
   animation: showLabel 250ms cubic-bezier(0, 0.55, 0.37, 1.29);
   transform-origin: right center;
-  max-width: 240px;
-  line-height: 140%;
+  display: flex;
+  width: 260px;
+  max-width: 100%;
+  padding: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.chat-widget___ .container .chat-widget-btn .chat-dialog .label {
+  color: var(--textColor);
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+}
+.chat-widget___ .container .chat-widget-btn .chat-dialog .caption {
+  color: var(--textColor);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(1) {
+  padding: 4px;
+}
+.chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(1) ::before {
+  content: "•";
+  width: 100%;
+  height: 100%;
+  background-color: #14B8A6;
+  border-radius: 100%;
+}
+.chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(2) {
+  opacity: 0.7;
 }
 @keyframes showLabel {
   from {
