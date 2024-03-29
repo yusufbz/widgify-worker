@@ -97,7 +97,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		// appent dialog to the btn as first child
 		btn.insertBefore(dialog, btn.firstChild)
 
-		setTimeout(() => { dialog.style.display = "flex" }, 2000)
+		setTimeout(() => { dialog.querySelector(".container").style.display = "flex" }, 2000)
 		// setTimeout(() => { dialog.style.display = "none" }, 10000)
 	}
 
