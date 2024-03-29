@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .chat-widget___ {
   position: relative;
   margin: 0;
@@ -95,6 +94,7 @@
   border-radius: 100%;
   align-items: center;
   justify-content: center;
+  display: flex;
   box-shadow: rgba(5, 24, 20, 0.13) 0px 4px 20px 0px;
 }
 .chat-widget___ .container .chat-widget-btn .chat-widget-launcher img {
@@ -122,7 +122,7 @@
   box-shadow: 0px -2px 6px 0px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .label {
-  color: var(--textColor);
+  color: #0F172A;
   font-family: Inter;
   font-size: 15px;
   font-style: normal;
@@ -130,7 +130,7 @@
   line-height: 18px;
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .caption {
-  color: var(--textColor);
+  color: #0F172A;
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -144,7 +144,7 @@
   padding: 4px;
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(1) ::before {
-  content: "•";
+  content: "";
   width: 100%;
   height: 100%;
   background-color: #14B8A6;
@@ -152,6 +152,21 @@
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(2) {
   opacity: 0.7;
+}
+.chat-widget___ .container .chat-widget-btn .chat-dialog .close-dialog-btn {
+  cursor: pointer;
+  display: flex;
+  padding: 4px;
+  align-items: flex-start;
+  gap: 4px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.05);
+}
+.chat-widget___ .container .chat-widget-btn .chat-dialog .close-dialog-btn :hover {
+  background: rgba(0, 0, 0, 0.1);
 }
 @keyframes showDialog {
   from {

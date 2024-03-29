@@ -83,13 +83,13 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 			<span class="indicator"></span>
 			<span>We’ll respond immediately</span>
 		</div>
-		<button class="close-dialog-btn">
+		<div class="close-dialog-btn">
 			<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<g opacity="0.5">
 				<path fill-rule="evenodd" clip-rule="evenodd" d="M4.23123 4.23123C4.53954 3.92292 5.03941 3.92292 5.34772 4.23123L9 7.88352L12.6523 4.23123C12.9606 3.92292 13.4605 3.92292 13.7688 4.23123C14.0771 4.53954 14.0771 5.03941 13.7688 5.34772L10.1165 9L13.7688 12.6523C14.0771 12.9606 14.0771 13.4605 13.7688 13.7688C13.4605 14.0771 12.9606 14.0771 12.6523 13.7688L9 10.1165L5.34772 13.7688C5.03941 14.0771 4.53954 14.0771 4.23123 13.7688C3.92292 13.4605 3.92292 12.9606 4.23123 12.6523L7.88352 9L4.23123 5.34772C3.92292 5.03941 3.92292 4.53954 4.23123 4.23123Z" fill="black"/>
 				</g>
 			</svg>
-		</button>
+		</div>
 		`
 		btn.appendChild(dialog)
 
@@ -121,7 +121,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	
 	const pageBody = document.querySelector(".vhPBy")
 	pageBody.appendChild(section)
-	
+
 	const closeDialogBtn = document.querySelector(".close-dialog-btn")
 	
 	btnLauncher.addEventListener("click", toggleChatWidget);
