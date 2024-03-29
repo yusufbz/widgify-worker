@@ -74,11 +74,8 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		const dialog = document.createElement('div');
 
 		if (widget.style.position == "flex-end") {
-
 			btn.style.flexFlow = "row"
 			btn.style.flexWrap = "wrap"
-			// container.style.justifyContent = "flex-end"
-			// btn.style.justifyContent = "flex-end"
 		}
 		else {
 			btn.style.flexFlow = "row-reverse"
@@ -103,10 +100,9 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		</div>
 		`
 
-		// appent dialog to the btn as first child
 		btn.insertBefore(dialog, btn.firstChild)
 
-		setTimeout(() => { dialog.style.display = "flex" }, 2000)
+		setTimeout(() => { dialog.style.display = "flex" }, 1000)
 		// setTimeout(() => { dialog.style.display = "none" }, 10000)
 	}
 
