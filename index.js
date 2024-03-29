@@ -73,8 +73,8 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 
 		const dialog = document.createElement('div');
 
-		if (widget.style.position == "flex-end") dialog.style.flexDirection = "row-reverse";
-		else dialog.style.left = "row";
+		if (widget.style.position == "flex-end") btn.style.flexDirection = "row-reverse";
+		else btn.style.flexDirection = "row";
 
 		dialog.className = "chat-dialog"
 		dialog.innerHTML = `
