@@ -15,6 +15,7 @@ function toggleChatWidget() {
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
 
 	const chatDialog = document.querySelector(".chat-dialog")
+	console.log(chatDialog)
 	chatDialog.style.display = "none"
 
 	chat_modal.classList.toggle("show")
