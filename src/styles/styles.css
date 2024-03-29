@@ -203,4 +203,10 @@
     opacity: 0%;
     transform: scale(0);
   }
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }/*# sourceMappingURL=styles.css.map */

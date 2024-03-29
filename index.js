@@ -78,8 +78,8 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 
 		dialog.className = "chat-dialog"
 		dialog.innerHTML = `
-		<div class="label">${widget.style.label.text}</div>
-		<div class="caption">
+		<div class="label ellipsis">${widget.style.label.text}</div>
+		<div class="caption ellipsis">
 			<span class="indicator"></span>
 			<span>We’ll respond immediately</span>
 		</div>
