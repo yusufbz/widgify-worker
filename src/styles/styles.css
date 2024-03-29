@@ -118,6 +118,7 @@
   font-weight: 600;
   line-height: 18px;
   width: 100%;
+  padding-right: 24px;
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .caption {
   color: #0F172A;
