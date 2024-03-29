@@ -73,25 +73,29 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 
 		const dialog = document.createElement('div');
 
-		if (widget.style.position == "flex-end") btn.style.flexDirection = "row-reverse";
-		else btn.style.flexDirection = "row";
+		if (widget.style.position == "flex-end") btn.style.flexFlow = "row-reverse";
+		else btn.style.flexFlow = "row";
 
 		dialog.className = "chat-dialog"
 		dialog.innerHTML = `
-		<div class="label ellipsis">${widget.style.label.text}</div>
-		<div class="caption ellipsis">
-			<span class="indicator"></span>
-			<span class="content">We’ll respond immediately</span>
-		</div>
-		<div class="close-dialog-btn">
-			<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<g opacity="0.5">
-				<path fill-rule="evenodd" clip-rule="evenodd" d="M4.23123 4.23123C4.53954 3.92292 5.03941 3.92292 5.34772 4.23123L9 7.88352L12.6523 4.23123C12.9606 3.92292 13.4605 3.92292 13.7688 4.23123C14.0771 4.53954 14.0771 5.03941 13.7688 5.34772L10.1165 9L13.7688 12.6523C14.0771 12.9606 14.0771 13.4605 13.7688 13.7688C13.4605 14.0771 12.9606 14.0771 12.6523 13.7688L9 10.1165L5.34772 13.7688C5.03941 14.0771 4.53954 14.0771 4.23123 13.7688C3.92292 13.4605 3.92292 12.9606 4.23123 12.6523L7.88352 9L4.23123 5.34772C3.92292 5.03941 3.92292 4.53954 4.23123 4.23123Z" fill="black"/>
-				</g>
-			</svg>
+		<div class="container">
+			<div class="label ellipsis">${widget.style.label.text}</div>
+			<div class="caption ellipsis">
+				<span class="indicator"></span>
+				<span class="content">We’ll respond immediately</span>
+			</div>
+			<div class="close-dialog-btn">
+				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g opacity="0.5">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M4.23123 4.23123C4.53954 3.92292 5.03941 3.92292 5.34772 4.23123L9 7.88352L12.6523 4.23123C12.9606 3.92292 13.4605 3.92292 13.7688 4.23123C14.0771 4.53954 14.0771 5.03941 13.7688 5.34772L10.1165 9L13.7688 12.6523C14.0771 12.9606 14.0771 13.4605 13.7688 13.7688C13.4605 14.0771 12.9606 14.0771 12.6523 13.7688L9 10.1165L5.34772 13.7688C5.03941 14.0771 4.53954 14.0771 4.23123 13.7688C3.92292 13.4605 3.92292 12.9606 4.23123 12.6523L7.88352 9L4.23123 5.34772C3.92292 5.03941 3.92292 4.53954 4.23123 4.23123Z" fill="black"/>
+					</g>
+				</svg>
+			</div>
 		</div>
 		`
-		btn.appendChild(dialog)
+
+		// appent dialog to the btn as first child
+		btn.insertBefore(dialog, btn.firstChild)
 
 		setTimeout(() => { dialog.style.display = "flex" }, 2000)
 		// setTimeout(() => { dialog.style.display = "none" }, 10000)
@@ -112,18 +116,18 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	// closeBtn.className = "chat-close-modal"
 	// closeBtn.src = "https://assets.lightfunnels.com/account-206/images_library/60e13e8e-8385-4653-85e4-ebd06928c179.24x24.svg"
 
-	
+
 	container.appendChild(chat_modal)
 	container.appendChild(chat_modal)
 	container.appendChild(btn)
-	
+
 	section.appendChild(container)
-	
+
 	const pageBody = document.querySelector(".vhPBy")
 	pageBody.appendChild(section)
 
 	const closeDialogBtn = document.querySelector(".close-dialog-btn")
-	
+
 	btnLauncher.addEventListener("click", toggleChatWidget);
 	closeDialogBtn.addEventListener("click", closeChatDialog)
 	// closeBtn.addEventListener("click", toggleChatWidget);
