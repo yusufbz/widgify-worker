@@ -76,12 +76,12 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		if (widget.style.position == "flex-end") {
 			btn.style.flexFlow = "row"
 			btn.style.flexWrap = "wrap"
-			btn.style.justifyContent = "flex-end"
+			btn.style.justifyContent = "flex-start"
 		}
 		else {
 			btn.style.flexFlow = "row-reverse"
 			btn.style.flexWrap = "wrap"
-			// btn.style.justifyContent = "flex-start"
+			btn.style.justifyContent = "flex-end"
 		}
 
 		dialog.className = "chat-dialog"
