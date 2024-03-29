@@ -32,8 +32,6 @@ function closeChatDialog() {
 	chatDialog.style.display = "none"
 }
 
-
-
 function addWidgetStyle(widget) {
 	console.log("adding styles...")
 	const styleTag = document.createElement('style');
@@ -69,6 +67,8 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const launcherIcon = document.createElement('img');
 	launcherIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
 	btnLauncher.appendChild(launcherIcon)
+	btnLauncher.addEventListener("click", toggleChatWidget);
+	
 	if (widget.style.label.hasLabel) {
 
 		const dialog = document.createElement('div');
@@ -103,6 +103,10 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 
 		setTimeout(() => { dialog.style.display = "flex" }, 1000)
 		// setTimeout(() => { dialog.style.display = "none" }, 10000)
+
+		const closeDialogBtn = document.querySelector(".close-dialog-btn")
+		closeDialogBtn.addEventListener("click", closeChatDialog)
+
 	}
 
 	// MODAL
@@ -129,11 +133,6 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 
 	const pageBody = document.querySelector(".vhPBy")
 	pageBody.appendChild(section)
-
-	const closeDialogBtn = document.querySelector(".close-dialog-btn")
-
-	btnLauncher.addEventListener("click", toggleChatWidget);
-	closeDialogBtn.addEventListener("click", closeChatDialog)
 	// closeBtn.addEventListener("click", toggleChatWidget);
 }
 
