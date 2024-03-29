@@ -83,6 +83,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		else {
 			btn.style.flexFlow = "row-reverse"
 			btn.style.flexWrap = "wrap"
+			dialog.style.transformOrigin = "bottom left"
 			// container.style.justifyContent = "flex-start"
 			// btn.style.justifyContent = "flex-start"
 		}
