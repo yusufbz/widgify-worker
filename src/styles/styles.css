@@ -72,6 +72,7 @@
   width: 100%;
   justify-content: flex-start;
   flex-wrap: wrap;
+  width: 100%;
 }
 .chat-widget___ .container .chat-widget-btn .chat-widget-launcher {
   cursor: pointer;
@@ -204,7 +205,6 @@
   .chat-widget___ .container {
     height: 100svh;
     padding: 0px;
-    width: 100%;
   }
   .chat-widget___ .container .chat-modal {
     width: 100%;
