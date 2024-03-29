@@ -97,25 +97,21 @@
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog {
   position: absolute;
-  padding: 12px;
   background-color: white;
-  color: white;
   border-radius: 12px;
-  font-size: 14px;
   top: 50%;
   transform: translateY(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.02);
   width: -moz-max-content;
   width: max-content;
   display: none;
   animation: showDialog 250ms cubic-bezier(0, 0.55, 0.37, 1.29);
   transform-origin: right center;
-  width: 260px;
-  max-width: 100%;
+  max-width: 260px;
   padding: 14px;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
+  box-shadow: 0px -2px 6px 0px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .label {
   color: var(--textColor);
