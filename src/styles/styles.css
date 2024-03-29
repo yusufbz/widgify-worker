@@ -108,9 +108,8 @@
   width: -moz-max-content;
   width: max-content;
   display: none;
-  animation: showLabel 250ms cubic-bezier(0, 0.55, 0.37, 1.29);
+  animation: showDialog 250ms cubic-bezier(0, 0.55, 0.37, 1.29);
   transform-origin: right center;
-  display: flex;
   width: 260px;
   max-width: 100%;
   padding: 14px;
@@ -150,7 +149,7 @@
 .chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(2) {
   opacity: 0.7;
 }
-@keyframes showLabel {
+@keyframes showDialog {
   from {
     opacity: 0%;
     transform: scale(0.5) translateY(-50%);

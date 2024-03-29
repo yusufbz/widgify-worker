@@ -67,8 +67,13 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const btnIcon = document.createElement('img');
 	btnIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
 	if (widget.style.label.hasLabel) {
+
+		console.log("Widget has label")
 		const dialog = document.createElement('div');
-		widget.style.position == "flex-end" ? dialog.style.right = "calc(64px + 12px)" : dialog.style.left = "calc(64px + 12px)"
+
+		if (widget.style.position == "flex-end") dialog.style.right = "calc(64px + 12px)"
+		else dialog.style.left = "calc(64px + 12px)";
+
 		dialog.className = "chat-dialog"
 		dialog.innerHTML = `
 		<div class="label">${widget.style.label.text}</div>
@@ -84,6 +89,8 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 			</svg>
 		</button>
 		`
+
+		console.log(dialog)
 		btn.appendChild(dialog)
 
 		setTimeout(() => { dialog.style.display = "flex" }, 2000)
