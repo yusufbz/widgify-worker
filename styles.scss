@@ -163,6 +163,7 @@
 						width: 100%;
 
 						.indicator {
+							display: inline-flex;
 							padding: 4px;
 
 							&::before {

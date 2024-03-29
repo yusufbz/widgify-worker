@@ -148,6 +148,7 @@
   width: 100%;
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .container .caption .indicator {
+  display: inline-flex;
   padding: 4px;
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .container .caption .indicator::before {
