@@ -53,22 +53,23 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const section = document.createElement('section');
 	section.className = `chat-widget___`
 	section.style.zIndex = "999999999"
+	document.querySelector(".vhPBy").appendChild(section)
+
 	const container = document.createElement('div');
 	container.className = "container"
+	section.appendChild(container)
 	if (widget.style.position == "flex-end") container.style.right = "0px";
 	else container.style.left = "0px";
-
 	// BTN
 	const btn = document.createElement('div');
 	btn.className = 'chat-widget-btn';
+	container.appendChild(btn)
 	const btnLauncher = document.createElement('div');
 	btnLauncher.className = 'chat-widget-launcher';
 	btn.appendChild(btnLauncher)
 	const launcherIcon = document.createElement('img');
 	launcherIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
 	btnLauncher.appendChild(launcherIcon)
-	btnLauncher.addEventListener("click", toggleChatWidget);
-	
 	if (widget.style.label.hasLabel) {
 
 		const dialog = document.createElement('div');
@@ -104,36 +105,21 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 		setTimeout(() => { dialog.style.display = "flex" }, 1000)
 		// setTimeout(() => { dialog.style.display = "none" }, 10000)
 
-		const closeDialogBtn = document.querySelector(".close-dialog-btn")
-		closeDialogBtn.addEventListener("click", closeChatDialog)
+
 
 	}
-
 	// MODAL
 	const chat_modal = document.createElement('iframe');
 	chat_modal.className = "chat-modal"
 	chat_modal.src = `${iframeSrc}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
-	// TODO LABEL: Add Later
-	// const dialog = document.createElement('iframe');
-	// dialog.className = "chat-dialog"
-	// dialog.src = `${iframeSrc}/dialog?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
-
-
-
-	// const closeBtn = document.createElement("img")
-	// closeBtn.className = "chat-close-modal"
-	// closeBtn.src = "https://assets.lightfunnels.com/account-206/images_library/60e13e8e-8385-4653-85e4-ebd06928c179.24x24.svg"
-
-
 	container.appendChild(chat_modal)
-	container.appendChild(chat_modal)
-	container.appendChild(btn)
 
-	section.appendChild(container)
+	btnLauncher.addEventListener("click", toggleChatWidget);
 
-	const pageBody = document.querySelector(".vhPBy")
-	pageBody.appendChild(section)
-	// closeBtn.addEventListener("click", toggleChatWidget);
+	if (widget.style.label.hasLabel) {
+		document.querySelector(".close-dialog-btn").addEventListener("click", closeChatDialog)
+	}
+
 }
 
 window.addEventListener('message', function (event) {
