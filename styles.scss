@@ -78,8 +78,7 @@
 			display: flex;
 			gap: 16px;
 			align-items: flex-end;
-			// width: 100%;
-			justify-content: flex-start;
+			justify-content: flex-end;
 			flex-wrap: wrap;
 
 			.chat-widget-launcher {
