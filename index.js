@@ -15,7 +15,6 @@ function toggleChatWidget() {
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
 
 	const chatDialog = document.querySelector(".chat-dialog")
-	console.log(chatDialog)
 	chatDialog.style.display = "none"
 
 	chat_modal.classList.toggle("show")
@@ -64,11 +63,14 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	// BTN
 	const btn = document.createElement('div');
 	btn.className = 'chat-widget-btn';
-	const btnIcon = document.createElement('img');
-	btnIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
+	const btnLauncher = document.createElement('div');
+	btnLauncher.className = 'chat-widget-launcher';
+	btn.appendChild(btnLauncher)
+	const launcherIcon = document.createElement('img');
+	launcherIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
+	btnLauncher.appendChild(launcherIcon)
 	if (widget.style.label.hasLabel) {
 
-		console.log("Widget has label")
 		const dialog = document.createElement('div');
 
 		if (widget.style.position == "flex-end") dialog.style.right = "calc(64px + 12px)"
@@ -89,14 +91,11 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 			</svg>
 		</button>
 		`
-
-		console.log(dialog)
 		btn.appendChild(dialog)
 
 		setTimeout(() => { dialog.style.display = "flex" }, 2000)
 		// setTimeout(() => { dialog.style.display = "none" }, 10000)
 	}
-	btn.appendChild(btnIcon)
 
 	// MODAL
 	const chat_modal = document.createElement('iframe');
@@ -122,7 +121,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const pageBody = document.querySelector(".vhPBy")
 	pageBody.appendChild(section)
 
-	btn.addEventListener("click", toggleChatWidget);
+	btnLauncher.addEventListener("click", toggleChatWidget);
 	// closeBtn.addEventListener("click", toggleChatWidget);
 }
 
