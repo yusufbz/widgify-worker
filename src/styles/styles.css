@@ -69,6 +69,13 @@
   animation: showBtn 250ms cubic-bezier(0, 0.55, 0.37, 1.29);
   z-index: 1;
   transform: scale(1);
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 .chat-widget___ .container .chat-widget-btn .chat-widget-launcher {
   cursor: pointer;
@@ -92,11 +99,8 @@
   min-height: 24px;
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog {
-  position: absolute;
   background-color: white;
   border-radius: 12px;
-  top: 50%;
-  transform: translateY(-50%);
   width: -moz-max-content;
   width: max-content;
   display: none;
@@ -207,7 +211,7 @@
     border-radius: 0px;
   }
   .chat-widget___ .container .chat-widget-btn {
-    margin: 20px;
+    padding: 20px;
   }
 }
 
