@@ -144,7 +144,7 @@
 .chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(1) {
   padding: 4px;
 }
-.chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(1) ::before {
+.chat-widget___ .container .chat-widget-btn .chat-dialog .caption:nth-child(1)::before {
   content: "";
   width: 100%;
   height: 100%;
