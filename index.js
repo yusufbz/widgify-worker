@@ -52,7 +52,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	// SECTION
 	const section = document.createElement('section');
 	const { desktop, tablet, mobile } = widget.style.displayOn
-	section.className = `chat-widget___ ${!desktop ?? "hide_on_desktop"} ${!tablet ?? "hide_on_tablet"} ${!mobile ?? "hide_on_mobile"}`
+	section.className = `chat-widget___ ${!desktop ? "hide_on_desktop" : ""} ${!tablet ? "hide_on_tablet" : ""} ${!mobile ? "hide_on_mobile" : ""}`
 	section.style.zIndex = "999999999"
 	document.querySelector(".vhPBy").appendChild(section)
 
