@@ -51,7 +51,8 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	console.log("Adding widget…")
 	// SECTION
 	const section = document.createElement('section');
-	section.className = `chat-widget___`
+	const { desktop, tablet, mobile } = widget.style.displayOn
+	section.className = `chat-widget___ ${!desktop ?? "hide_on_desktop"} ${!tablet ?? "hide_on_tablet"} ${!mobile ?? "hide_on_mobile"}`
 	section.style.zIndex = "999999999"
 	document.querySelector(".vhPBy").appendChild(section)
 
@@ -103,10 +104,10 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 
 		btn.insertBefore(dialog, btn.firstChild)
 
-		
+
 		setTimeout(() => { dialog.style.display = "flex" }, 1000)
 		// setTimeout(() => { dialog.style.display = "none" }, 10000)
-		
+
 		document.querySelector(".close-dialog-btn").addEventListener("click", closeChatDialog)
 	}
 	// MODAL
