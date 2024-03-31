@@ -244,22 +244,23 @@
 			}
 		}
 	}
+}
 
-	@media (min-width: 769px) {
-		.hide_on_desktop {
-			display: none;
-		}
-	};
-	
-	@media (min-width: 481px) {
-		.hide_on_tablet {
-			display: none;
-		}
+@media (min-width: 769px) {
+	.hide_on_desktop {
+		display: none;
 	}
-	@media (max-width: 480px) {
-		.hide_on_mobile {
-			display: none;
-		}
+}
+
+@media (min-width: 481px) {
+	.hide_on_tablet {
+		display: none;
+	}
+}
+
+@media (max-width: 480px) {
+	.hide_on_mobile {
+		display: none;
 	}
 }
 

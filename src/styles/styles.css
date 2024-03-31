@@ -215,22 +215,22 @@
     padding: 20px;
   }
 }
+
 @media (min-width: 769px) {
-  .chat-widget___ .hide_on_desktop {
+  .hide_on_desktop {
     display: none;
   }
 }
 @media (min-width: 481px) {
-  .chat-widget___ .hide_on_tablet {
+  .hide_on_tablet {
     display: none;
   }
 }
 @media (max-width: 480px) {
-  .chat-widget___ .hide_on_mobile {
+  .hide_on_mobile {
     display: none;
   }
 }
-
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;
