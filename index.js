@@ -50,7 +50,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const iframeSrc = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
 	console.log("Adding widget…")
 	// SECTION
-	const section = document.createElement('section');
+	const section = document.createElement('div');
 	const { desktop, tablet, mobile } = widget.style.displayOn
 	section.className = `chat-widget___ ${!desktop ? "hide_on_desktop" : ""} ${!tablet ? "hide_on_tablet" : ""} ${!mobile ? "hide_on_mobile" : ""}`
 	section.style.zIndex = "999999999"
