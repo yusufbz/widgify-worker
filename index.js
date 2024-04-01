@@ -54,7 +54,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const { desktop, tablet, mobile } = widget.style.displayOn
 	section.className = `chat-widget___ ${!desktop ? "hide_on_desktop" : ""} ${!tablet ? "hide_on_tablet" : ""} ${!mobile ? "hide_on_mobile" : ""}`
 	section.style.zIndex = "999999999"
-	document.querySelector(".vhPBy").appendChild(section)
+	document.body.appendChild(section)
 
 	const container = document.createElement('div');
 	container.className = "container"
