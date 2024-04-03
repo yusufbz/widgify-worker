@@ -10,12 +10,14 @@ async function fetchWidget({ ...props }) {
 	return await response.json();
 }
 
-function toggleChatWidget() {
+function toggleChatWidget(hasLabel = false) {
 	const chat_modal = document.querySelector(".chat-modal")
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
 
-	const chatDialog = document.querySelector(".chat-dialog")
-	chatDialog.style.display = "none"
+	if (hasLabel) {
+		const chatDialog = document.querySelector(".chat-dialog")
+		chatDialog.style.display = "none"
+	}
 
 	chat_modal.classList.toggle("show")
 	// check if the chat widget is open or not
@@ -71,7 +73,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const launcherIcon = document.createElement('img');
 	launcherIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
 	btnLauncher.appendChild(launcherIcon)
-	btnLauncher.addEventListener("click", toggleChatWidget);
+	btnLauncher.addEventListener("click", toggleChatWidget(widget.style.label.hasLabel));
 	if (widget.style.label.hasLabel) {
 
 		const dialog = document.createElement('div');
