@@ -172,5 +172,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 	}
 	catch (err) {
 		console.log(err)
+		Bugsnag.notify(err)
 	}
 })
