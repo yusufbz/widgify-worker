@@ -1,3 +1,20 @@
+// Create a new script element for Bugsnag
+var bugsnagScript = document.createElement('script');
+bugsnagScript.src = '//d2wy8f7a9ursnm.cloudfront.net/v7/bugsnag.min.js';
+
+// Set onload function to initialize Bugsnag after script is loaded
+bugsnagScript.onload = function () {
+	// Import Bugsnag Performance module
+	const BugsnagPerformance = require('//d2wy8f7a9ursnm.cloudfront.net/v1/bugsnag-performance.min.js')
+
+	// Start Bugsnag and Bugsnag Performance
+	Bugsnag.start({ apiKey: '8aa9f71fe4d9e6471648442df6e71240' });
+	BugsnagPerformance.start({ apiKey: '8aa9f71fe4d9e6471648442df6e71240' });
+};
+
+// Append the Bugsnag script to the document
+document.head.appendChild(bugsnagScript);
+
 async function fetchWidget({ ...props }) {
 	// console.log(props)
 	console.log("fetching…")
@@ -10,7 +27,7 @@ async function fetchWidget({ ...props }) {
 	return await response.json();
 }
 
-function toggleChatWidget(hasLabel = false) {
+function toggleChatWidget(haLabel = false) {
 	const chat_modal = document.querySelector(".chat-modal")
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
 
