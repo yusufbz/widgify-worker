@@ -17,13 +17,19 @@ document.head.appendChild(bugsnagScript);
 async function fetchWidget({ ...props }) {
 	// console.log(props)
 	console.log("fetching…")
-	const response = await fetch(`${props.port}/storefront/getWidget?_id=${props.chat_widget_id}`, {
-		method: "GET",
-		headers: {
-			"Content-Type": "application/json",
-		}
-	});
-	return await response.json();
+	try{
+
+		const response = await fetch(`${props.port}/storefront/getWidget?_id=${props.chat_widget_id}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			}
+		});
+		return await response.json();
+	}catch(err){
+		console.log("Error fetching widget: ", err)
+		bugsnag.notify(new Error(err))
+	}
 }
 
 function toggleChatWidget(haLabel = false) {
@@ -133,7 +139,6 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	chat_modal.className = "chat-modal"
 	chat_modal.src = `${iframeSrc}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
 	container.appendChild(chat_modal)
-
 }
 
 window.addEventListener('message', function (event) {
@@ -144,6 +149,8 @@ window.addEventListener('message', function (event) {
 
 document.addEventListener('DOMContentLoaded', async () => {
 	try {
+
+		bugsnag.notify(new Error("test error"))
 
 		const script = document.querySelector('script[src="https://worker.widgify.chat/index.js"]');
 
