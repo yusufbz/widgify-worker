@@ -78,6 +78,11 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	section.appendChild(container)
 	if (widget.style.position == "flex-end") container.style.right = "0px";
 	else container.style.left = "0px";
+	// MODAL
+	const chat_modal = document.createElement('iframe');
+	chat_modal.className = "chat-modal"
+	chat_modal.src = `${iframeSrc}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
+	container.appendChild(chat_modal)
 	// BTN
 	const btn = document.createElement('div');
 	btn.className = 'chat-widget-btn';
@@ -127,11 +132,6 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 
 		document.querySelector(".close-dialog-btn").addEventListener("click", closeChatDialog)
 	}
-	// MODAL
-	const chat_modal = document.createElement('iframe');
-	chat_modal.className = "chat-modal"
-	chat_modal.src = `${iframeSrc}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
-	container.appendChild(chat_modal)
 }
 
 window.addEventListener('message', function (event) {
