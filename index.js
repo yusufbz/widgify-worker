@@ -44,7 +44,11 @@ function closeChatWidget() {
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
 
 	chat_modal.classList.toggle("show")
-	chat_widget_btn.classList.toggle("hide")
+	if (chat_widget_btn.classList.contains("hide"))
+		setTimeout(() => {
+			chat_widget_btn.classList.toggle("hide")
+		}, 500)
+	else chat_widget_btn.classList.toggle("hide")
 }
 
 // function toggleChatWidget({ iframeSrc, hasLabel = false }) {
