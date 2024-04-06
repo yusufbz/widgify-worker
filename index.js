@@ -25,7 +25,7 @@ async function fetchWidget({ ...props }) {
 	return await response.json();
 }
 
-function toggleChatWidget(hasLabel = false) {
+function openChatWidget({ iframeSrc }) {
 	const chat_modal = document.querySelector(".chat-modal")
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
 
@@ -34,15 +34,37 @@ function toggleChatWidget(hasLabel = false) {
 		chatDialog.style.display = "none"
 	}
 
+	chat_modal.src = iframeSrc
 	chat_modal.classList.toggle("show")
-	// check if the chat widget is open or not
-	if (chat_widget_btn.classList.contains("hide"))
-		setTimeout(() => {
-			chat_widget_btn.classList.toggle("hide")
-		}, 500)
-	else chat_widget_btn.classList.toggle("hide")
-
+	chat_widget_btn.classList.toggle("hide")
 }
+
+function closeChatWidget() {
+	const chat_modal = document.querySelector(".chat-modal")
+	const chat_widget_btn = document.querySelector(".chat-widget-btn")
+
+	chat_modal.classList.toggle("show")
+	chat_widget_btn.classList.toggle("hide")
+}
+
+// function toggleChatWidget({ iframeSrc, hasLabel = false }) {
+// 	const chat_modal = document.querySelector(".chat-modal")
+// 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
+
+// 	if (hasLabel) {
+// 		const chatDialog = document.querySelector(".chat-dialog")
+// 		chatDialog.style.display = "none"
+// 	}
+
+// 	chat_modal.classList.toggle("show")
+// 	// check if the chat widget is open or not
+// 	if (chat_widget_btn.classList.contains("hide"))
+// 		setTimeout(() => {
+// 			chat_widget_btn.classList.toggle("hide")
+// 		}, 500)
+// 	else chat_widget_btn.classList.toggle("hide")
+
+// }
 
 function closeChatDialog() {
 	const chatDialog = document.querySelector(".chat-dialog")
@@ -64,7 +86,8 @@ function addWidgetStyle(widget) {
 }
 
 function createWidget({ _id, chat_widget_id, widget, env }) {
-	const iframeSrc = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
+	const url = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
+	const iframeSrc = `${url}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
 	console.log("Adding widget…")
 	// SECTION
 	const section = document.createElement('div');
@@ -81,7 +104,6 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	// MODAL
 	const chat_modal = document.createElement('iframe');
 	chat_modal.className = "chat-modal"
-	chat_modal.src = `${iframeSrc}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
 	container.appendChild(chat_modal)
 	// BTN
 	const btn = document.createElement('div');
@@ -93,7 +115,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const launcherIcon = document.createElement('img');
 	launcherIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
 	btnLauncher.appendChild(launcherIcon)
-	btnLauncher.addEventListener("click", () => toggleChatWidget(widget.style.label.hasLabel));
+	btnLauncher.addEventListener("click", () => openChatWidget({ src: iframeSrc, hasLabel: widget.style.label.hasLabel }));
 	if (widget.style.label.hasLabel) {
 
 		const dialog = document.createElement('div');
@@ -136,7 +158,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 
 window.addEventListener('message', function (event) {
 	if (event.origin === 'http://localhost:9932' || "https://storefront.widgify.chat") {
-		if (event.data === 'toggleChatWidget') toggleChatWidget();
+		if (event.data === 'closeChatWidget') closeChatWidget();
 	}
 });
 
