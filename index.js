@@ -115,7 +115,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	const launcherIcon = document.createElement('img');
 	launcherIcon.src = "https://assets.lightfunnels.com/account-206/images_library/e41cd459-4c85-4fb7-a4fd-93ce657e26b9.chat.svg"
 	btnLauncher.appendChild(launcherIcon)
-	btnLauncher.addEventListener("click", () => openChatWidget({ src: iframeSrc, hasLabel: widget.style.label.hasLabel }));
+	btnLauncher.addEventListener("click", () => openChatWidget({ iframeSrc, hasLabel: widget.style.label.hasLabel }));
 	if (widget.style.label.hasLabel) {
 
 		const dialog = document.createElement('div');
