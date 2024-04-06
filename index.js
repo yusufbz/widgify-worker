@@ -25,7 +25,7 @@ async function fetchWidget({ ...props }) {
 	return await response.json();
 }
 
-function openChatWidget({ iframeSrc }) {
+function openChatWidget({ iframeSrc, hasLabel = false }) {
 	const chat_modal = document.querySelector(".chat-modal")
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
 
