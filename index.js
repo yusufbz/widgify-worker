@@ -33,10 +33,16 @@ function openChatWidget({ iframeSrc, hasLabel = false }) {
 		const chatDialog = document.querySelector(".chat-dialog")
 		chatDialog.style.display = "none"
 	}
-
 	chat_modal.src = iframeSrc
 	chat_modal.classList.toggle("show")
 	chat_widget_btn.classList.toggle("hide")
+
+	// Specify '*' as the target origin to allow communication with any origin
+	// send postMessage to the iframe object with type of widget_opened
+	// check if the iframs is loaded
+	chat_modal.onload = function () {
+		chat_modal.contentWindow.postMessage('widget_click', '*');
+	}
 }
 
 function closeChatWidget() {
