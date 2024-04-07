@@ -41,7 +41,9 @@ function openChatWidget({ iframeSrc, hasLabel = false }) {
 	// send postMessage to the iframe object with type of widget_opened
 	// check if the iframs is loaded
 	chat_modal.onload = function () {
-		chat_modal.contentWindow.postMessage('widget_click', '*');
+		chat_modal.contentWindow.postMessage({
+			type: "widget_click"
+		}, '*');
 	}
 }
 
