@@ -40,11 +40,11 @@ function openChatWidget({ iframeSrc, hasLabel = false }) {
 	// Specify '*' as the target origin to allow communication with any origin
 	// send postMessage to the iframe object with type of widget_opened
 	// check if the iframs is loaded
-	chat_modal.onload = function () {
-		chat_modal.contentWindow.postMessage({
-			type: "widget_click"
-		}, '*');
-	}
+	// chat_modal.onload = function () {
+	// 	chat_modal.contentWindow.postMessage({
+	// 		type: "widget_click"
+	// 	}, '*');
+	// }
 }
 
 function closeChatWidget() {

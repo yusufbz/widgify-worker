@@ -91,10 +91,10 @@
   transform: scale(1);
 }
 .chat-widget___ .container .chat-widget-btn .chat-widget-launcher img {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  min-height: 24px;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
 }
 @keyframes showBtnLauncher {
   from {
