@@ -97,7 +97,7 @@ function addWidgetStyle(widget) {
 	document.head.appendChild(styleTag);
 }
 
-function createWidget({ _id, chat_widget_id, widget, env }) {
+function createWidget({ _id, chat_widget_id, widget, env, platform }) {
 
 	const link = document.createElement('link');
 	link.rel = 'stylesheet';
@@ -106,7 +106,7 @@ function createWidget({ _id, chat_widget_id, widget, env }) {
 	document.head.appendChild(link);
 
 	const url = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
-	const iframeSrc = `${url}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}`
+	const iframeSrc = `${url}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}&platform=${platform}`
 	console.log("Adding widget…")
 	// SECTION
 	const section = document.createElement('div');
@@ -191,6 +191,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const _id = script.dataset._id;
 		const chat_widget_id = script.dataset.chat_widget_id;
 		const port = env === "dev" ? "https://widgify-api-dev.up.railway.app" : env === "local" ? "http://localhost:9931" : "https://api.widgify.chat"
+		const platform = script.dataset.platform
 
 		const account = await fetch(`${port}/storefront/getAccount?_id=${_id}`, {
 			method: "GET",
@@ -199,7 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		if (account.hasAccess) {
 			fetchWidget({ chat_widget_id, port }).then(data => {
-				createWidget({ _id, chat_widget_id, widget: data, env })
+				createWidget({ _id, chat_widget_id, widget: data, env, platform })
 				addWidgetStyle(data)
 				console.log("page is fully loaded");
 			}).catch(error => {
