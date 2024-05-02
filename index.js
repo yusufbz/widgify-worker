@@ -193,12 +193,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const port = env === "dev" ? "https://widgify-api-dev.up.railway.app" : env === "local" ? "http://localhost:9931" : "https://api.widgify.chat"
 		const platform = script.dataset.platform
 
-		const account = await fetch(`${port}/storefront/getAccount?_id=${_id}`, {
+		const user = await fetch(`${port}/storefront/getUser?_id=${_id}`, {
 			method: "GET",
 			headers: { "Content-Type": "application/json" }
 		}).then(res => res.json()).catch(err => { throw new Error(err) })
 
-		if (account.hasAccess) {
+		if (user.hasAccess) {
 			fetchWidget({ chat_widget_id, port }).then(data => {
 				createWidget({ _id, chat_widget_id, widget: data, env, platform })
 				addWidgetStyle(data)
