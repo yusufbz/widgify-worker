@@ -106,7 +106,7 @@ function createWidget({ _id, chat_widget_id, widget, env, platform }) {
 	document.head.appendChild(link);
 
 	const url = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
-	const iframeSrc = `${url}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}&platform=${platform}`
+	const iframeSrc = `${url}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}&platform=${platform}allow="autoplay"`
 	console.log("Adding widget…")
 	// SECTION
 	const section = document.createElement('div');
