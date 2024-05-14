@@ -50,8 +50,7 @@
   }
 }
 .chat-widget___ .container .close {
-  opacity: 0;
-  animation: 250ms showModal 250ms ease-out;
+  animation: 250ms showModal ease-out;
   animation-fill-mode: both;
   pointer-events: all;
 }
