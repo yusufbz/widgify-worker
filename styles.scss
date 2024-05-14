@@ -56,6 +56,8 @@
 			}
 		}
 
+		// TODO Fix later for close animation
+
 		.close {
 			animation: 250ms showModal ease-out;
 			animation-fill-mode: both;
@@ -237,7 +239,7 @@
 		}
 
 		@media (max-width: 600px) {
-			height: 100svh;
+			// height: 100svh;
 			padding: 0px;
 
 			.chat-modal {
