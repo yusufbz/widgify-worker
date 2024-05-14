@@ -52,7 +52,8 @@ function openChatWidget({ iframeSrc, hasLabel = false }) {
 	}
 	chat_modal.src = iframeSrc
 	chat_modal.allow = "autoplay"
-	chat_modal.classList.toggle("show")
+	chat_modal.classList.add("show")
+	chat_modal.classList.remove("close")
 	chat_widget_btn.classList.toggle("hide")
 
 	// Specify '*' as the target origin to allow communication with any origin
@@ -69,7 +70,8 @@ function closeChatWidget() {
 	const chat_modal = document.querySelector(".chat-modal")
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
 
-	chat_modal.classList.toggle("show")
+	chat_modal.classList.remove("show")
+	chat_modal.classList.add("close")
 	if (chat_widget_btn.classList.contains("hide"))
 		setTimeout(() => {
 			chat_widget_btn.classList.toggle("hide")

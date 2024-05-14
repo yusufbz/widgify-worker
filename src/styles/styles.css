@@ -28,23 +28,10 @@
   box-shadow: rgba(5, 24, 20, 0.13) 0px 4px 20px 0px;
   overflow: hidden;
   display: none;
-  animation: 250ms closeModal 250ms ease-out;
-  animation-fill-mode: both;
+  opacity: 100%;
   border: none;
   z-index: 2;
   pointer-events: none;
-}
-@keyframes closeModal {
-  from {
-    opacity: 100%;
-    transform: translateY(0px);
-    display: flex;
-  }
-  to {
-    opacity: 0%;
-    transform: translateY(24px);
-    display: none;
-  }
 }
 .chat-widget___ .container .show {
   display: flex;
@@ -60,6 +47,24 @@
   to {
     opacity: 100%;
     transform: translateY(0);
+  }
+}
+.chat-widget___ .container .close {
+  opacity: 0;
+  animation: 250ms showModal 250ms ease-out;
+  animation-fill-mode: both;
+  pointer-events: all;
+}
+@keyframes closeModal {
+  from {
+    opacity: 100%;
+    transform: translateY(0px);
+    display: flex;
+  }
+  to {
+    opacity: 0%;
+    transform: translateY(24px);
+    display: none;
   }
 }
 .chat-widget___ .container .chat-widget-btn {
