@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		const _id = script.dataset._id;
 		const chat_widget_id = script.dataset.chat_widget_id;
-		const port = env === "dev" ? "https://widgify-api-dev.up.railway.app" : env === "local" ? "http://localhost:9931" : "https://api.widgify.chat"
+		const port = env === "dev" ? "https://apii.widgify.chat" : env === "local" ? "http://localhost:9931" : "https://api.widgify.chat"
 		const platform = script.dataset.platform
 
 		const user = await fetch(`${port}/storefront/getUser?_id=${_id}`, {
