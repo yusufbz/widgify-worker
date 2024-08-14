@@ -168,6 +168,8 @@
 					gap: 4px;
 					align-items: center;
 					width: 100%;
+					text-overflow: ellipsis;
+					overflow: hidden;
 
 					.indicator {
 						display: inline-flex;
