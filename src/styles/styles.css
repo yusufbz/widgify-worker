@@ -162,6 +162,8 @@
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .caption .content {
   opacity: 0.7;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .chat-widget___ .container .chat-widget-btn .chat-dialog .close-dialog-btn {
   cursor: pointer;
