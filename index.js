@@ -174,7 +174,7 @@ function createWidget({ _id, chat_widget_id, widget, env, platform }) {
 		<div class="label ellipsis">${widget.style.label.text}</div>
 		<div class="caption ellipsis">
 			<span class="indicator"></span>
-			<span class="content">We’ll respond immediately</span>
+			<span class="content">${widget.style.label.respondTime}</span>
 		</div>
 		<div class="close-dialog-btn">
 			<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
