@@ -208,6 +208,7 @@
 @media (max-width: 600px) {
   .chat-widget___ .container {
     padding: 0px;
+    width: 100%;
   }
   .chat-widget___ .container .chat-modal {
     width: 100%;
