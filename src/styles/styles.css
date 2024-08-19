@@ -15,7 +15,7 @@
   justify-content: flex-end;
   align-items: var(--position);
 }
-.chat-widget___ .container s .chat-modal {
+.chat-widget___ .container .chat-modal {
   width: 420px;
   max-width: 100%;
   height: 100vh;
