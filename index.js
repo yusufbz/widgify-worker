@@ -223,7 +223,7 @@ window.addEventListener('message', function (event) {
 document.addEventListener('DOMContentLoaded', async () => {
 	try {
 
-		const script = document.querySelector('script[src="https://worker.widgify.chat/dist/bundle.js"]');
+		const script = document.querySelector('script[src="https://worker.widgify.chat/index.js"]');
 
 		const env = script.dataset.env
 
