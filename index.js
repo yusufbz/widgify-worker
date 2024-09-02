@@ -14,6 +14,8 @@
 // // Append the Bugsnag script to the document
 // document.head.appendChild(bugsnagScript);
 
+import './src/styles/styles.css'; // Adjust the path as necessary
+
 // Add links to the head tag
 const link1 = document.createElement('link');
 link1.rel = 'preconnect';
@@ -45,6 +47,7 @@ async function fetchWidget({ ...props }) {
 function openChatWidget({ iframeSrc, hasLabel = false }) {
 	const chat_modal = document.querySelector(".chat-modal")
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
+	const poweredBy = document.querySelector(".powered-by")
 
 	if (hasLabel) {
 		const chatDialog = document.querySelector(".chat-dialog")
@@ -55,6 +58,7 @@ function openChatWidget({ iframeSrc, hasLabel = false }) {
 	chat_modal.classList.add("show")
 	chat_modal.classList.remove("close")
 	chat_widget_btn.classList.toggle("hide")
+	poweredBy?.classList?.toggle("show")
 
 	// Specify '*' as the target origin to allow communication with any origin
 	// send postMessage to the iframe object with type of widget_opened
@@ -69,6 +73,9 @@ function openChatWidget({ iframeSrc, hasLabel = false }) {
 function closeChatWidget() {
 	const chat_modal = document.querySelector(".chat-modal")
 	const chat_widget_btn = document.querySelector(".chat-widget-btn")
+	const poweredBy = document.querySelector(".powered-by")
+
+	poweredBy?.classList.toggle("show")
 
 	chat_modal.classList.remove("show")
 	chat_modal.classList.add("close")
@@ -117,12 +124,12 @@ function addWidgetStyle(widget) {
 	document.head.appendChild(styleTag);
 }
 
-function createWidget({ _id, chat_widget_id, widget, env, platform }) {
+function createWidget({ _id, chat_widget_id, widget, env, platform, selectedPlan }) {
 
 	const link = document.createElement('link');
 	link.rel = 'stylesheet';
 	link.type = 'text/css';
-	link.href = "https://worker.widgify.chat/src/styles/styles.css"
+	link.href = "https://worker.widgify.chat/dist/styles.css"
 	document.head.appendChild(link);
 
 	const url = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
@@ -144,6 +151,17 @@ function createWidget({ _id, chat_widget_id, widget, env, platform }) {
 	const chat_modal = document.createElement('iframe');
 	chat_modal.className = "chat-modal"
 	container.appendChild(chat_modal)
+	// POWERED BY
+	if (selectedPlan === "price_1PAe02GuSc0lsvia7pMoQ5JA" || selectedPlan === "price_1PAe02ia7pMoQ5JAGuSc0lsv") {
+		const poweredBy = document.createElement('a');
+		poweredBy.className = 'powered-by';
+		poweredBy.href = 'https://widgify.chat?ref=widget';
+		poweredBy.target = '_blank';
+		poweredBy.innerHTML = 'Powered by: <img src="https://storefront.widgify.chat/d76772b21555c89371c891f3d91edd00.svg">';
+		container.appendChild(poweredBy)
+	} else {
+		chat_modal.classList.add("pb-unvisible")
+	}
 	// BTN
 	const btn = document.createElement('div');
 	btn.className = 'chat-widget-btn';
@@ -202,11 +220,10 @@ window.addEventListener('message', function (event) {
 });
 
 
-
 document.addEventListener('DOMContentLoaded', async () => {
 	try {
 
-		const script = document.querySelector('script[src="https://worker.widgify.chat/index.js"]');
+		const script = document.querySelector('script[src="https://worker.widgify.chat/dist/bundle.js"]');
 
 		const env = script.dataset.env
 
@@ -222,7 +239,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		if (user.hasAccess) {
 			fetchWidget({ chat_widget_id, port }).then(data => {
-				createWidget({ _id, chat_widget_id, widget: data, env, platform })
+				createWidget({ _id, chat_widget_id, widget: data, env, platform, selectedPlan: user.selectedPlan })
 				addWidgetStyle(data)
 				console.log("page is fully loaded");
 			}).catch(error => {
