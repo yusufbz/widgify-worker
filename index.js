@@ -129,7 +129,7 @@ function createWidget({ _id, chat_widget_id, widget, env, platform, selectedPlan
 	const link = document.createElement('link');
 	link.rel = 'stylesheet';
 	link.type = 'text/css';
-	link.href = "https://worker.widgify.chat/dist/styles.css"
+	link.href = "https://worker.widgify.chat/src/styles/styles.css"
 	document.head.appendChild(link);
 
 	const url = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
