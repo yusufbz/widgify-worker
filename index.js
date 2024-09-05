@@ -34,7 +34,6 @@ link3.rel = 'stylesheet';
 document.head.appendChild(link3);
 
 async function fetchWidget({ ...props }) {
-	// console.log(props)
 	const response = await fetch(`${props.port}/storefront/getWidget?_id=${props.chat_widget_id}`, {
 		method: "GET",
 		headers: {
@@ -111,7 +110,6 @@ function closeChatDialog() {
 }
 
 function addWidgetStyle(widget) {
-	console.log("adding styles...")
 	const styleTag = document.createElement('style');
 
 	styleTag.textContent = `
@@ -134,7 +132,6 @@ function createWidget({ _id, chat_widget_id, widget, env, platform, selectedPlan
 
 	const url = env === "local" ? "http://localhost:9932" : "https://storefront.widgify.chat";
 	const iframeSrc = `${url}?_id=${_id}&chat_widget_id=${chat_widget_id}&env=${env}&platform=${platform}&source=${window.location.href}`
-	console.log("Adding widget…")
 	// SECTION
 	const section = document.createElement('div');
 	const { desktop, tablet, mobile } = widget.style.displayOn
@@ -241,7 +238,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 			fetchWidget({ chat_widget_id, port }).then(data => {
 				createWidget({ _id, chat_widget_id, widget: data, env, platform, selectedPlan: user.selectedPlan })
 				addWidgetStyle(data)
-				console.log("page is fully loaded");
 			}).catch(error => {
 				console.error('Error fetching data:', error);
 			})
@@ -250,7 +246,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 		}
 	}
 	catch (err) {
-		console.log("Error: ", err)
 		console.log(err)
 		// Bugsnag.notify(new Error(err))
 	}
