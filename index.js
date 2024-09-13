@@ -152,7 +152,7 @@ function createWidget({ _id, chat_widget_id, widget, env, platform, selectedPlan
 	if (selectedPlan === "price_1PAe02GuSc0lsvia7pMoQ5JA" || selectedPlan === "price_1PAe02ia7pMoQ5JAGuSc0lsv") {
 		const poweredBy = document.createElement('a');
 		poweredBy.className = 'powered-by';
-		poweredBy.href = 'https://widgify.chat?ref=widget';
+		poweredBy.href = `https://www.widgify.chat/?ref=powered_by&utm_source=powered_by&utm_medium=${window.location.href}&utm_widget_id=${widget._id}&utm_content=${widget.name}`
 		poweredBy.target = '_blank';
 		poweredBy.innerHTML = 'Powered by: <img src="https://storefront.widgify.chat/d76772b21555c89371c891f3d91edd00.svg">';
 		container.appendChild(poweredBy)
