@@ -234,6 +234,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 			headers: { "Content-Type": "application/json" }
 		}).then(res => res.json()).catch(err => { throw new Error(err) })
 
+		console.log("user", user)
+
 		if (user.hasAccess) {
 			fetchWidget({ chat_widget_id, port }).then(data => {
 				createWidget({ _id, chat_widget_id, widget: data, env, platform, selectedPlan: user.selectedPlan })
