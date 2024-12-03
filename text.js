@@ -1,5 +1,4 @@
 (function () {
-
 	// // Create a new script element for Bugsnag
 	// var bugsnagScript = document.createElement('script');
 	// import BugsnagPerformance from '//d2wy8f7a9ursnm.cloudfront.net/v1/bugsnag-performance.min.js';
@@ -212,73 +211,6 @@
 		}
 	}
 
-	async function init() {
-		try {
-			// handling the case of the old chat_widget_id script tag
-			const script1 = document.querySelector('script[src^="https://worker.widgify.chat/index.js"]');
-			const script2 = document.querySelector('script[src^="https://worker.widgify.chat/dist/index.js"]');
-			const script = script2 || script1;
-
-			if (!script) return;
-			const params = script.src?.split("?")[1]?.split("&");
-			let env, platform, widget_id, port;
-
-			// First, get the platform from either params or dataset
-			platform = params ? params[0].split("=")[1] : script.dataset.platform;
-
-			// Then handle the assignments based on platform
-			if (platform === "shopify") {
-				widget_id = params[1].split("=")[1];
-				env = params[2].split("=")[1];
-			} else {
-				_id = script.dataset._id;
-				// to handle the case of the old chat_widget_id script tag
-				widget_id = script.dataset.widget_id || script.dataset.chat_widget_id;
-				env = script.dataset.env;
-			}
-
-			port = env === "dev" ? "https://api.widgify.chat" : env === "local" ? "http://localhost:9090" : "https://api.widgify.chat";
-
-			fetchWidget({ widget_id, port }).then(async data => {
-				// const user = await fetch(`${port}/storefront/getUser?_id=${data.user_id}`, {
-				// 	method: "GET",
-				// 	headers: { "Content-Type": "application/json" }
-				// }).then(res => res.json()).catch(err => { throw new Error(err) })
-
-				// if platform is exist then check if widget platform is active if platform is not exist then just create the widget
-				if (platform) {
-					if (data.apps[platform].active) {
-						createWidget({ _id: data.user_id, widget_id, widget: data, env, platform, selectedPlan: data.selectedPlan })
-						addWidgetStyle(data)
-					}
-				} else {
-					createWidget({ _id: data.user_id, widget_id, widget: data, env, selectedPlan: data.selectedPlan })
-					addWidgetStyle(data)
-				}
-
-			}).catch(error => {
-				console.error('Error fetching data:', error);
-			})
-
-		} catch (err) {
-			console.log(err)
-			// Bugsnag.notify(new Error(err))
-		}
-	}
-
-	// wait for the DOM to be fully loaded
-	if (document.readyState === "complete") {
-		init()
-	} else if (window.attachEvent) {
-		window.attachEvent("onload", init)
-	} else {
-		window.addEventListener("load", init, false)
-	}
-
-	window.addEventListener('message', function (event) {
-		if (event.origin === 'http://localhost:9932' || "https://storefront.widgify.chat") {
-			if (event.data === 'closeChatWidget') closeChatWidget();
-		}
-	});
+		
 
 })()
