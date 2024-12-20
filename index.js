@@ -1,7 +1,5 @@
 (function () {
 
-	console.log("Hello World")
-
 	// // Create a new script element for Bugsnag
 	// var bugsnagScript = document.createElement('script');
 	// import BugsnagPerformance from '//d2wy8f7a9ursnm.cloudfront.net/v1/bugsnag-performance.min.js';
@@ -256,7 +254,6 @@
 
 				// if platform is exist then check if widget platform is active if platform is not exist then just create the widget
 				if (platform) {
-					console.log("platform", platform)
 					if (data.apps[platform].active) {
 						createWidget({ _id: data.user_id, widget_id, widget: data, env, platform, selectedPlan: data.selectedPlan })
 						addWidgetStyle(data)
