@@ -1,5 +1,7 @@
 (function () {
 
+	console.log("Hello World")
+
 	// // Create a new script element for Bugsnag
 	// var bugsnagScript = document.createElement('script');
 	// import BugsnagPerformance from '//d2wy8f7a9ursnm.cloudfront.net/v1/bugsnag-performance.min.js';
@@ -36,7 +38,7 @@
 	document.head.appendChild(link3);
 
 	async function fetchWidget({ ...props }) {
-		const response = await fetch(`${props.port}/storefront/getWidget?_id=${props.widget_id}`, {
+		const response = await fetch(`${props.port}/storefront/getWidget?_id=${props.widget_id}&source=${props.source}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -215,13 +217,20 @@
 	async function init() {
 		try {
 			// handling the case of the old chat_widget_id script tag
-			const script1 = document.querySelector('script[src^="https://worker.widgify.chat/index.js"]');
-			const script2 = document.querySelector('script[src^="https://worker.widgify.chat/dist/index.js"]');
+			const script1 = document.querySelector('script[src^="https://worker.widgify.chat/index.js"]') || document.querySelector('script[src^="https://hyena-fresh-bison.ngrok-free.app/index.js"]');
+			const script2 = document.querySelector('script[src^="https://worker.widgify.chat/dist/index.js"]') || document.querySelector('script[src^="https://hyena-fresh-bison.ngrok-free.app/dist/index.js"]');
+			// converert the script2 to the script1 if the script2 is exist
+			if (script2) {
+				script2.src = script1.src
+			}
+
 			const script = script2 || script1;
+
+			console.log(script)
 
 			if (!script) return;
 			const params = script.src?.split("?")[1]?.split("&");
-			let env, platform, widget_id, port;
+			let env, platform, widget_id, port, _id;
 
 			// First, get the platform from either params or dataset
 			platform = params ? params[0].split("=")[1] : script.dataset.platform;
@@ -239,7 +248,7 @@
 
 			port = env === "dev" ? "https://api.widgify.chat" : env === "local" ? "http://localhost:9090" : "https://api.widgify.chat";
 
-			fetchWidget({ widget_id, port }).then(async data => {
+			fetchWidget({ widget_id, port, source: window.location.href }).then(async data => {
 				// const user = await fetch(`${port}/storefront/getUser?_id=${data.user_id}`, {
 				// 	method: "GET",
 				// 	headers: { "Content-Type": "application/json" }
