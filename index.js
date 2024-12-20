@@ -256,6 +256,7 @@
 
 				// if platform is exist then check if widget platform is active if platform is not exist then just create the widget
 				if (platform) {
+					console.log("platform", platform)
 					if (data.apps[platform].active) {
 						createWidget({ _id: data.user_id, widget_id, widget: data, env, platform, selectedPlan: data.selectedPlan })
 						addWidgetStyle(data)
