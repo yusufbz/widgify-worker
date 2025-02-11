@@ -210,6 +210,12 @@
 
 			document.querySelector(".close-dialog-btn").addEventListener("click", closeChatDialog)
 		}
+		if (widget.style.position == "flex-end") {
+			btn.style.marginRight = `${widget.style.position_x_offset}px`
+		} else {
+			btn.style.marginLeft = `${widget.style.position_x_offset}px`
+		}
+		btn.style.marginBottom = `${widget.style.position_y_offset}px`
 	}
 
 	async function init() {
