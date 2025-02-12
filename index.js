@@ -212,10 +212,13 @@
 		}
 		if (widget.style.position == "flex-end") {
 			btn.style.marginRight = `${widget.style.position_x_offset ? widget.style.position_x_offset : 20}px`
+			chat_modal.style.marginRight = `${widget.style.position_x_offset ? widget.style.position_x_offset : 20}px`
 		} else {
 			btn.style.marginLeft = `${widget.style.position_x_offset ? widget.style.position_x_offset : 20}px`
+			chat_modal.style.marginLeft = `${widget.style.position_x_offset ? widget.style.position_x_offset : 20}px`
 		}
 		btn.style.marginBottom = `${widget.style.position_y_offset ? widget.style.position_y_offset : 20}px`
+		chat_modal.style.marginBottom = `${widget.style.position_y_offset ? widget.style.position_y_offset : 20}px`
 	}
 
 	async function init() {
