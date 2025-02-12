@@ -8,7 +8,6 @@
 .chat-widget___ .container {
   position: fixed;
   bottom: 0px;
-  padding: 20px;
   z-index: 99999;
   display: flex;
   flex-direction: column;
@@ -264,4 +263,4 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+}/*# sourceMappingURL=styles.css.map */
