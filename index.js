@@ -206,7 +206,7 @@
 
 
 			setTimeout(() => { dialog.style.display = "flex" }, 1000)
-			setTimeout(() => { dialog.style.display = "none" }, 3000)
+			setTimeout(() => { dialog.style.display = "none" }, 6000)
 
 			document.querySelector(".close-dialog-btn").addEventListener("click", closeChatDialog)
 		}
