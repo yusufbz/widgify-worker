@@ -206,7 +206,7 @@
 
 
 			setTimeout(() => { dialog.style.display = "flex" }, 1000)
-			// setTimeout(() => { dialog.style.display = "none" }, 10000)
+			setTimeout(() => { dialog.style.display = "none" }, 3000)
 
 			document.querySelector(".close-dialog-btn").addEventListener("click", closeChatDialog)
 		}
@@ -224,8 +224,8 @@
 	async function init() {
 		try {
 			// handling the case of the old chat_widget_id script tag
-			const script1 = document.querySelector('script[src^="https://worker.widgify.chat/index.js"]') || document.querySelector('script[src^="https://hyena-fresh-bison.ngrok-free.app/index.js"]');
-			const script2 = document.querySelector('script[src^="https://worker.widgify.chat/dist/index.js"]') || document.querySelector('script[src^="https://hyena-fresh-bison.ngrok-free.app/dist/index.js"]');
+			const script1 = document.querySelector('script[src^="https://worker.widgify.chat/index.js"]') || document.querySelector('script[src^="https://fr9kbxml-5500.uks1.devtunnels.ms/index.js"]');
+			const script2 = document.querySelector('script[src^="https://worker.widgify.chat/dist/index.js"]') || document.querySelector('script[src^="https://fr9kbxml-5500.uks1.devtunnels.ms/dist/index.js"]');
 			// converert the script2 to the script1 if the script2 is exist
 			if (script2) {
 				script2.src = script1.src
@@ -237,14 +237,23 @@
 
 			if (!script) return;
 			const params = script.src?.split("?")[1]?.split("&");
-			let env, platform, widget_id, port, _id;
+			let env, platform, widget_id, port, _id, shop_id;
+
+			console.log(params)
 
 			// First, get the platform from either params or dataset
 			platform = params ? params[0].split("=")[1] : script.dataset.platform;
 
 			// Then handle the assignments based on platform
 			if (platform === "shopify") {
-				widget_id = params[1].split("=")[1];
+				console.log("we are in shopify")
+				const shopify_widget_id = await fetch(`https://fr9kbxml-9090.uks1.devtunnels.ms/storefront/getShopifyWidget?shop_id=${params[1].split("=")[1]}`, {
+					method: "GET",
+					headers: { "Content-Type": "application/json" }
+				}).then(res => res.json()).catch(err => { throw new Error(err) })
+
+				console.log(shopify_widget_id)
+				widget_id = shopify_widget_id.widget_id;
 				env = params[2].split("=")[1];
 			} else {
 				_id = script.dataset._id;
@@ -253,7 +262,7 @@
 				env = script.dataset.env;
 			}
 
-			port = env === "dev" ? "https://api.widgify.chat" : env === "local" ? "http://localhost:9090" : "https://api.widgify.chat";
+			port = env === "dev" ? "https://api.widgify.chat" : env === "local" ? "https://fr9kbxml-9090.uks1.devtunnels.ms" : "https://api.widgify.chat";
 
 			fetchWidget({ widget_id, port, source: window.location.href }).then(async data => {
 				// const user = await fetch(`${port}/storefront/getUser?_id=${data.user_id}`, {
