@@ -233,6 +233,10 @@
 			btn.style.setProperty('margin-left', `${xOffset}px`, 'important')
 		}
 		btn.style.setProperty('margin-bottom', `${yOffset}px`, 'important')
+
+
+		console.log(btn)
+		console.log(chat_modal)
 	}
 
 	async function init() {
