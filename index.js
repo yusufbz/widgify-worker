@@ -222,24 +222,17 @@
 					margin-bottom: ${yOffset}px !important;
 					${widget.style.position == "flex-end" ? `margin-right: ${xOffset}px !important;` : `margin-left: ${xOffset}px !important;`}
 				}
-				.chat-widget___ .container .chat-widget-btn {
-					margin-bottom: ${yOffset}px !important;
-					${widget.style.position == "flex-end" ? `margin-right: ${xOffset}px !important;` : `margin-left: ${xOffset}px !important;`}
-				}
 			}
 		`;
 		document.head.appendChild(offsetStyleTag);
 		
-		// // Also apply inline styles as fallback
-		// if (widget.style.position == "flex-end") {
-		// 	btn.style.setProperty('margin-right', `${xOffset}px`, 'important')
-		// 	chat_modal.style.setProperty('margin-right', `${xOffset}px`, 'important')
-		// } else {
-		// 	btn.style.setProperty('margin-left', `${xOffset}px`, 'important')
-		// 	chat_modal.style.setProperty('margin-left', `${xOffset}px`, 'important')
-		// }
-		// btn.style.setProperty('margin-bottom', `${yOffset}px`, 'important')
-		// chat_modal.style.setProperty('margin-bottom', `${yOffset}px`, 'important')
+		// Also apply inline styles as fallback
+		if (widget.style.position == "flex-end") {
+			btn.style.setProperty('margin-right', `${xOffset}px`, 'important')
+		} else {
+			btn.style.setProperty('margin-left', `${xOffset}px`, 'important')
+		}
+		btn.style.setProperty('margin-bottom', `${yOffset}px`, 'important')
 	}
 
 	async function init() {
