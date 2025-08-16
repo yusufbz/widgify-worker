@@ -217,7 +217,7 @@
 		// Create dynamic CSS to override media query restrictions
 		const offsetStyleTag = document.createElement('style');
 		offsetStyleTag.textContent = `
-			@media (min-width: 375px) {
+			@media (min-width: 600px) {
 				.chat-widget___ .container .chat-modal {
 					margin-bottom: ${yOffset}px !important;
 					${widget.style.position == "flex-end" ? `margin-right: ${xOffset}px !important;` : `margin-left: ${xOffset}px !important;`}
