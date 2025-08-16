@@ -210,22 +210,43 @@
 
 			document.querySelector(".close-dialog-btn").addEventListener("click", closeChatDialog)
 		}
-		if (widget.style.position == "flex-end") {
-			btn.style.marginRight = `${widget.style.position_x_offset ? widget.style.position_x_offset : 20}px`
-			chat_modal.style.marginRight = `${widget.style.position_x_offset ? widget.style.position_x_offset : 20}px`
-		} else {
-			btn.style.marginLeft = `${widget.style.position_x_offset ? widget.style.position_x_offset : 20}px`
-			chat_modal.style.marginLeft = `${widget.style.position_x_offset ? widget.style.position_x_offset : 20}px`
-		}
-		btn.style.marginBottom = `${widget.style.position_y_offset ? widget.style.position_y_offset : 20}px`
-		chat_modal.style.marginBottom = `${widget.style.position_y_offset ? widget.style.position_y_offset : 20}px`
+		// Apply X/Y offsets on all devices (desktop, tablet, mobile) - override CSS media queries
+		const xOffset = widget.style.position_x_offset ? widget.style.position_x_offset : 20;
+		const yOffset = widget.style.position_y_offset ? widget.style.position_y_offset : 20;
+		
+		// Create dynamic CSS to override media query restrictions
+		const offsetStyleTag = document.createElement('style');
+		offsetStyleTag.textContent = `
+			@media (min-width: 375px) {
+				.chat-widget___ .container .chat-modal {
+					margin-bottom: ${yOffset}px !important;
+					${widget.style.position == "flex-end" ? `margin-right: ${xOffset}px !important;` : `margin-left: ${xOffset}px !important;`}
+				}
+				.chat-widget___ .container .chat-widget-btn {
+					margin-bottom: ${yOffset}px !important;
+					${widget.style.position == "flex-end" ? `margin-right: ${xOffset}px !important;` : `margin-left: ${xOffset}px !important;`}
+				}
+			}
+		`;
+		document.head.appendChild(offsetStyleTag);
+		
+		// // Also apply inline styles as fallback
+		// if (widget.style.position == "flex-end") {
+		// 	btn.style.setProperty('margin-right', `${xOffset}px`, 'important')
+		// 	chat_modal.style.setProperty('margin-right', `${xOffset}px`, 'important')
+		// } else {
+		// 	btn.style.setProperty('margin-left', `${xOffset}px`, 'important')
+		// 	chat_modal.style.setProperty('margin-left', `${xOffset}px`, 'important')
+		// }
+		// btn.style.setProperty('margin-bottom', `${yOffset}px`, 'important')
+		// chat_modal.style.setProperty('margin-bottom', `${yOffset}px`, 'important')
 	}
 
 	async function init() {
 		try {
 			// handling the case of the old chat_widget_id script tag
-			const script1 = document.querySelector('script[src^="https://worker.widgify.chat/index.js"]') || document.querySelector('script[src^="https://fr9kbxml-5500.uks1.devtunnels.ms/index.js"]');
-			const script2 = document.querySelector('script[src^="https://worker.widgify.chat/dist/index.js"]') || document.querySelector('script[src^="https://fr9kbxml-5500.uks1.devtunnels.ms/dist/index.js"]');
+			const script1 = document.querySelector('script[src^="https://worker.widgify.chat/index.js"]') || document.querySelector('script[src^="https://hyena-fresh-bison.ngrok-free.app/index.js"]');
+			const script2 = document.querySelector('script[src^="https://worker.widgify.chat/dist/index.js"]') || document.querySelector('script[src^="https://hyena-fresh-bison.ngrok-free.app/dist/index.js"]');
 			// converert the script2 to the script1 if the script2 is exist
 			if (script2) {
 				script2.src = script1.src
